@@ -1,17 +1,27 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"math/rand"
 	"time"
 )
 
 func main() {
-	a := []int{1, 2, 3, 4, 5, 6, 7}
-	n := len(a)
-	k := 2
 
-	selectKItems(a, n, k)
+	nFlag := flag.Int("n", 39, "n items")
+	k := flag.Int("k", 5, "choosing k samples")
+
+	flag.Parse()
+
+	a := make([]int, *nFlag)
+	for i := range a {
+		a[i] = i + 1
+	}
+	ln := len(a)
+	fmt.Println(*nFlag, *k)
+
+	selectKItems(a, ln, *k)
 }
 
 func selectKItems(streams []int, n int, k int) {
