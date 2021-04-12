@@ -21,10 +21,10 @@ func main() {
 	ln := len(a)
 	fmt.Println(*nFlag, *k)
 
-	selectKItems(a, ln, *k)
+	fmt.Println(SelectKItems(a, ln, *k))
 }
 
-func selectKItems(streams []int, n int, k int) {
+func SelectKItems(streams []int, n int, k int) []int {
 
 	var i int
 	reservoir := make([]int, k)
@@ -35,14 +35,11 @@ func selectKItems(streams []int, n int, k int) {
 	}
 	for ; i < n; i++ {
 		j := rand.Intn(i + 1)
-		//fmt.Println(i+1, j)
 		if j < k {
-			//fmt.Println("j<k:", j, k, streams[i])
 			reservoir[j] = streams[i]
 		}
 	}
-	fmt.Println(reservoir)
-	//printResult(reservoir, k)
+	return reservoir
 }
 
 func printResult(s []int, n int) {
