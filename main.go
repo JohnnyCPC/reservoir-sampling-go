@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"math/rand"
+	"sort"
 	"time"
 )
 
@@ -39,6 +40,8 @@ func SelectKItems(streams []int, n int, k int) []int {
 			reservoir[j] = streams[i]
 		}
 	}
+	sort.Ints(reservoir)
+
 	return reservoir
 }
 
